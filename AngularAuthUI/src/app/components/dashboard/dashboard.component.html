@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Angular AUTH</a>
+   
+    <div>
+        <p>Hello, {{fullName}}</p>
+    </div>
+  <button (click)="logOut()" class="btn btn-danger" style="margin-top: -2px;">Logout</button>
+  </nav>
+</div>
+<div class="container table-responsive">
+  <table class="table table-hover" *ngIf="users && users.length > 0">
+      <thead>
+          <tr>
+              <th>id</th>
+              <th>firstName</th>
+              <th>lastName</th>
+              <th>Email</th>
+              <th>UserName</th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let users of users">
+          <tr>
+              <td>{{users.id}}</td>
+              <td>{{users.firstName}}</td>
+              <td>{{users.lastName}}</td>
+              <td>{{users.email}}</td>
+              <td>{{users.username}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <p *ngif="!employees || employees.length <= 0">Data Not Found</p>
+</div>
