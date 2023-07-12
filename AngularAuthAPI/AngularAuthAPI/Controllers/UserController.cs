@@ -50,7 +50,7 @@ namespace AngularAuthAPI.Controllers
             var newAccessToken = user.Token;
             var newRefreshToken = CreateRefreshToken();
             user.RefreshToken = newRefreshToken;
-            user.RefreshTokenExpiryTime=DateTime.Now.AddDays(1);
+            user.RefreshTokenExpiryTime=DateTime.Now.AddSeconds(10);
             await _dbContext.SaveChangesAsync();
             return Ok(new TokenApiDto()
             {

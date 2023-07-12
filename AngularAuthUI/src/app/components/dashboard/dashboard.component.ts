@@ -10,6 +10,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 export class DashboardComponent implements OnInit{
   public users:any=[];
   public fullName:string="";
+  public role!:string;
 constructor(private auth:AuthService,private api:ApiService,private userStore:UserStoreService){
 
 }
@@ -21,6 +22,10 @@ constructor(private auth:AuthService,private api:ApiService,private userStore:Us
     this.userStore.getfullNameFromStore().subscribe(val=>{
       let fullNameFromToken=this.auth.getfullNameFromToken();
       this.fullName=val || fullNameFromToken
+    });
+    this.userStore.getRoleFromStore().subscribe(val=>{
+      const roleFromToken = this.auth.getRoleFromToken();
+      this.role =val || roleFromToken;
     })
   }
   logOut()
